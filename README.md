@@ -1,24 +1,75 @@
-# README
+# テーブ設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## usersテーブル
 
-Things you may want to cover:
+| Column       | Type   | Options     |
+|--------------|--------|-------------|
+| nickname     | string | null: false |
+| email        | string | null: false |
+| password     | string | null: false |
+| last_name_j  | string | null: false |
+| first_name_j | string | null: false |
+| last_name_k  | string | null: false |
+| first_name_k | string | null: false |
+| birth_day    | date   | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :purchase_histories
 
-* Configuration
 
-* Database creation
+## itemsテーブル
 
-* Database initialization
+| Column               | Type       | Options                        |
+|----------------------|------------|--------------------------------|
+| user_id              | references | null: false, foreign_key: true |
+| image                |            |                                |
+| item_name            | string     | null: false                    |
+| item_description     | text       | null: false                    |
+| item_category        | string     | null: false                    |
+| item_condition       | string     | null: false                    |
+| delivery_charge      | string     | null: false                    |
+| delivery_source_area | string     | null: false                    |
+| days_to_delivery     | string     | null: false                    |
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+- belongs_to :user
+- has_one :purchase_history
 
-* Deployment instructions
 
-* ...
+## purchase_historiesテーブル
+
+| Column  | Type       | Options                        |
+|---------|------------|--------------------------------|
+| user_id | references | null: false, foreign_key: true |
+| item_id | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+- has_one :purchaser's_address
+
+
+## purchaser's_addressテーブル
+
+| Column      | Type       | Options                        |
+|-------------|------------|--------------------------------|
+| purchase_id | references | null: false, foreign_key: true |
+| postal_code | string     | null: false                    |
+| state       | string     | null: false                    |
+| city        | string     | null: false                    |
+| address     | string     | null: false                    |
+| building    | string     |                                |
+| phone_num   | string     | null: false                    |
+
+### Association
+
+- belongs_to :purchase_history
+
+
+
+
+
