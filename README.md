@@ -31,6 +31,7 @@
 | delivery_charge_id      | integer    | null: false                    |
 | delivery_source_area_id | integer    | null: false                    |
 | days_to_delivery_id     | integer    | null: false                    |
+| price                   | string     | null: false                    |
 
 ### Association
 
@@ -44,7 +45,6 @@
 |----------------------|------------|--------------------------------|
 | user                 | references | null: false, foreign_key: true |
 | item                 | references | null: false, foreign_key: true |
-| delivery_source_area | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -59,7 +59,7 @@
 |----------------------|------------|--------------------------------|
 | purchase             | references | null: false, foreign_key: true |
 | postal_code          | string     | null: false                    |
-| delivery_source_area | references | null: false, foreign_key: true |
+| delivery_source_area | integer    | null: false, foreign_key: true |
 | city                 | string     | null: false                    |
 | address              | string     | null: false                    |
 | building             | string     |                                |
