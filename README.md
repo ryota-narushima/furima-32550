@@ -50,7 +50,7 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :purchaser_addresses
+- has_one :purchaser_address
 
 
 ## purchaser_addressesテーブル
