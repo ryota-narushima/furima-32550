@@ -1,4 +1,4 @@
-# テーブ設計
+# テーブル設計
 
 ## usersテーブル
 
@@ -68,8 +68,4 @@
 ### Association
 
 - belongs_to :purchase_history
-
-
-
-
 
