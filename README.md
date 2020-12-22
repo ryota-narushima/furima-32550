@@ -31,7 +31,7 @@
 | delivery_charge_id      | integer    | null: false                    |
 | delivery_source_area_id | integer    | null: false                    |
 | days_to_delivery_id     | integer    | null: false                    |
-| price                   | string     | null: false                    |
+| price                   | integer    | null: false                    |
 
 ### Association
 
@@ -50,20 +50,20 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :purchaser_address
+- has_one :purchaser_addresses
 
 
-## purchaser_addressテーブル
+## purchaser_addressesテーブル
 
-| Column               | Type       | Options                        |
-|----------------------|------------|--------------------------------|
-| purchase             | references | null: false, foreign_key: true |
-| postal_code          | string     | null: false                    |
-| delivery_source_area | integer    | null: false, foreign_key: true |
-| city                 | string     | null: false                    |
-| address              | string     | null: false                    |
-| building             | string     |                                |
-| phone_num            | string     | null: false                    |
+| Column                  | Type       | Options                        |
+|-------------------------|------------|--------------------------------|
+| purchase                | references | null: false, foreign_key: true |
+| postal_code             | string     | null: false                    |
+| delivery_source_area_id | integer    | null: false                    |
+| city                    | string     | null: false                    |
+| address                 | string     | null: false                    |
+| building                | string     |                                |
+| phone_num               | string     | null: false                    |
 
 ### Association
 
