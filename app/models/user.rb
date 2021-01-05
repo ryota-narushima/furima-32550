@@ -16,13 +16,13 @@ class User < ApplicationRecord
   validates_format_of :password, with: PASSWORD_REGEX
 
   # ユーザー本名は、全角（漢字・ひらがな・カタカナ）での入力が必須
-  with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々]+\z/ } do
+  with_options format: { with: /\A[ぁ-んァ-ヶ一-龥々]+\z/ } do
     validates :last_name_j
     validates :first_name_j
   end
 
   # ユーザー本名のフリガナは、全角（カタカナ）での入力が必須
-  with_options presence: true, format: { with: /\A[ァ-ヶ]+\z/ } do
+  with_options format: { with: /\A[ァ-ヶ]+\z/ } do
     validates :last_name_k
     validates :first_name_k
   end
