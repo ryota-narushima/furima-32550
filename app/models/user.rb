@@ -4,12 +4,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :nickname, presence: true
-  validates :last_name_j, presence: true
-  validates :first_name_j, presence: true
-  validates :last_name_k, presence: true
-  validates :first_name_k, presence: true
-  validates :birth_day, presence: true
+  with_options presence: true do
+    validates :nickname
+    validates :last_name_j
+    validates :first_name_j
+    validates :last_name_k
+    validates :first_name_k
+    validates :birth_day
+  end
 
   # 半角英数字混合のパスワード
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
