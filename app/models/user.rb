@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  # アソシエーション
+  has_many :items
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -26,4 +29,5 @@ class User < ApplicationRecord
     validates :last_name_k
     validates :first_name_k
   end
+
 end
