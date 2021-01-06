@@ -29,7 +29,7 @@ class Item < ApplicationRecord
   end
   
   # 販売価格は半角数字で¥300~¥9,999,999の範囲内しか保存できない
-  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
   
   # ActiveStorageのバリデーション
   validate :image_presence
@@ -38,7 +38,7 @@ class Item < ApplicationRecord
 
   def image_presence
     unless image.attached?
-      errors.add(:image, 'ファイルを添付してください')
+      errors.add(:image, '出品画像を選択してください')
     end
   end
 end
