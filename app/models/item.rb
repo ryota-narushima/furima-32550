@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   belongs_to :category, :condition, :delivery_charge, :delivery_source_area, :days_to_delivery
 
   #ジャンルの選択が「--」の時は保存できない
-  with_options numericality: { other_than: 1 } do
+  with_options numericality: { other_than: 0 } do
     validates :category_id
     validates :condition_id
     validates :delivery_charge_id
@@ -17,7 +17,6 @@ class Item < ApplicationRecord
   end
 
   #空の投稿は保存できない
-  validates :image, attached_file_presence: true
   with_options presence: true do
     validates :name
     validates :description
@@ -28,8 +27,18 @@ class Item < ApplicationRecord
     validates :days_to_delivery_id
     validates :price
   end
-
+  
   # 販売価格は半角数字で¥300~¥9,999,999の範囲内しか保存できない
   validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
+  
+  # ActiveStorageのバリデーション
+  validate :image_presence
 
+  private
+
+  def image_presence
+    unless image.attached?
+      errors.add(:image, 'ファイルを添付してください')
+    end
+  end
 end
