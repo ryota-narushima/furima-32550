@@ -18,6 +18,7 @@ class Item < ApplicationRecord
 
   #空の投稿は保存できない
   with_options presence: true do
+    validates :image
     validates :name
     validates :description
     validates :category_id
@@ -31,14 +32,4 @@ class Item < ApplicationRecord
   # 販売価格は半角数字で¥300~¥9,999,999の範囲内しか保存できない
   validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
   
-  # ActiveStorageのバリデーション
-  validate :image_presence
-
-  private
-
-  def image_presence
-    unless image.attached?
-      errors.add(:image, '出品画像を選択してください')
-    end
-  end
 end
