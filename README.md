@@ -21,14 +21,14 @@
 
 ## itemsテーブル
 
-| Column                  | Type       | Options                        |
+| Column                  | Type       | Options                        |
 |-------------------------|------------|--------------------------------|
-| user                    | references | null: false, foreign_key: true |
-| name                    | string     | null: false                    |
-| description             | text       | null: false                    |
-| category_id             | integer    | null: false                    |
-| condition_id            | integer    | null: false                    |
-| delivery_charge_id      | integer    | null: false                    |
+| user                    | references | null: false, foreign_key: true |
+| name                    | string     | null: false                    |
+| description             | text       | null: false                    |
+| category_id             | integer    | null: false                    |
+| condition_id            | integer    | null: false                    |
+| delivery_charge_id      | integer    | null: false                    |
 | delivery_source_area_id | integer    | null: false                    |
 | days_to_delivery_id     | integer    | null: false                    |
 | price                   | integer    | null: false                    |

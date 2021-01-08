@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  # アソシエーション
+  has_many :items
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
