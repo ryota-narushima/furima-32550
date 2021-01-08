@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category, :condition, :delivery_charge, :delivery_source_area, :days_to_delivery
 
-  #ジャンルの選択が「--」の時は保存できない
+  # ジャンルの選択が「--」の時は保存できない
   with_options numericality: { other_than: 0 } do
     validates :category_id
     validates :condition_id
@@ -16,7 +16,7 @@ class Item < ApplicationRecord
     validates :days_to_delivery_id
   end
 
-  #空の投稿は保存できない
+  # 空の投稿は保存できない
   with_options presence: true do
     validates :image
     validates :name
@@ -28,8 +28,7 @@ class Item < ApplicationRecord
     validates :days_to_delivery_id
     validates :price
   end
-  
+
   # 販売価格は半角数字で¥300~¥9,999,999の範囲内しか保存できない
-  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
-  
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
 end
