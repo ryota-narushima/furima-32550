@@ -1,4 +1,3 @@
-
 function displayPrice() {
   const priceInput = document.getElementById("item-price");
   const taxPriceInput = document.getElementById("add-tax-price");
