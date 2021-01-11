@@ -40,7 +40,11 @@ class ItemsController < ApplicationController
     if @item.user_id == current_user.id
       if @item.destroy
         redirect_to action: :index
+      else
+        render :show
       end
+    else
+      render :show
     end
   end
 
