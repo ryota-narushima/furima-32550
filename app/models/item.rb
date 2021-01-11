@@ -5,7 +5,11 @@ class Item < ApplicationRecord
 
   # ActiveHashのアソシエーション
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category, :condition, :delivery_charge, :delivery_source_area, :days_to_delivery
+  belongs_to :category
+  belongs_to :condition
+  belongs_to :delivery_charge
+  belongs_to :delivery_source_area
+  belongs_to :days_to_delivery
 
   # ジャンルの選択が「--」の時は保存できない
   with_options numericality: { other_than: 0 } do
