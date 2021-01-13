@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :items
-- has_many :purchase_histories
+- has_many :purchases
 
 
 ## itemsテーブル
@@ -36,10 +36,10 @@
 ### Association
 
 - belongs_to :user
-- has_one :purchase_history
+- has_one :purchase
 
 
-## purchase_historiesテーブル
+## purchasesテーブル
 
 | Column               | Type       | Options                        |
 |----------------------|------------|--------------------------------|
@@ -57,7 +57,7 @@
 
 | Column                  | Type       | Options                        |
 |-------------------------|------------|--------------------------------|
-| purchase_history        | references | null: false, foreign_key: true |
+| purchase                | references | null: false, foreign_key: true |
 | postal_code             | string     | null: false                    |
 | delivery_source_area_id | integer    | null: false                    |
 | city                    | string     | null: false                    |
@@ -67,5 +67,5 @@
 
 ### Association
 
-- belongs_to :purchase_history
+- belongs_to :purchase
 
