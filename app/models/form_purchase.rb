@@ -1,4 +1,4 @@
-class FormPurchases
+class FormPurchase
 
   include ActiveModel::Model
   attr_accessor :user_id, :item_id, :purchase_id, :postal_code, :delivery_source_area_id, :city, :address, :building, :phone_num
