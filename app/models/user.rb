@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   # アソシエーション
   has_many :items
+  has_many :purchases, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

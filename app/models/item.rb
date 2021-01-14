@@ -2,6 +2,7 @@ class Item < ApplicationRecord
   # アソシエーション
   has_one_attached :image
   belongs_to :user
+  has_many :purchases, dependent: :destroy
 
   # ActiveHashのアソシエーション
   extend ActiveHash::Associations::ActiveRecordExtensions
