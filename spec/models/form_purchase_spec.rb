@@ -9,6 +9,11 @@ RSpec.describe FormPurchase, type: :model do
     it 'すべての値が正しく入力されていれば保存できること' do
       expect(@form_purchase).to be_valid
     end
+    it 'buildingは空でも保存できること' do
+      @form_purchase.building = ""
+      expect(@form_purchase).to be_valid
+    end
+
     it "tokenが空では登録できないこと" do
       @form_purchase.token = ""
       @form_purchase.valid?
@@ -23,6 +28,11 @@ RSpec.describe FormPurchase, type: :model do
       @form_purchase.postal_code = "1234567"
       @form_purchase.valid?
       expect(@form_purchase.errors.full_messages).to include("Postal code is invalid")
+    end
+    it 'delivery_source_area_idが空だと保存できないこと' do
+      @form_purchase.delivery_source_area_id = ""
+      @form_purchase.valid?
+      expect(@form_purchase.errors.full_messages).to include("Delivery source area can't be blank")
     end
     it 'delivery_source_area_idを選択していないと保存できないこと' do
       @form_purchase.delivery_source_area_id = 0
@@ -39,10 +49,6 @@ RSpec.describe FormPurchase, type: :model do
       @form_purchase.valid?
       expect(@form_purchase.errors.full_messages).to include("Address can't be blank")
     end
-    it 'buildingは空でも保存できること' do
-      @form_purchase.building = ""
-      expect(@form_purchase).to be_valid
-    end
     it 'phone_numが空だと保存できないこと' do
       @form_purchase.phone_num = ""
       @form_purchase.valid?
@@ -52,6 +58,16 @@ RSpec.describe FormPurchase, type: :model do
       @form_purchase.phone_num = "090-1234-1234"
       @form_purchase.valid?
       expect(@form_purchase.errors.full_messages).to include("Phone num is invalid")
+    end
+    it 'user_idが空だと保存できないこと' do
+      @form_purchase.user_id = ""
+      @form_purchase.valid?
+      expect(@form_purchase.errors.full_messages).to include("User can't be blank")
+    end
+    it 'item_idが空だと保存できないこと' do
+      @form_purchase.item_id = ""
+      @form_purchase.valid?
+      expect(@form_purchase.errors.full_messages).to include("Item can't be blank")
     end
   end
 end
