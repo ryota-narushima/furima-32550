@@ -1,4 +1,7 @@
 class PurchasesController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :create]
+  before_action :move_to_index, only: [:index, :create]
+  before_action :sold_out, only: [:index, :create]
   before_action :set_item, only: [:index, :create] 
   
   def index
@@ -29,6 +32,20 @@ class PurchasesController < ApplicationController
       card: purchase_params[:token],    # カードトークン
       currency: 'jpy'                 # 通貨の種類（日本円）
     )
+  end
+
+  def move_to_index
+    @item = Item.find(params[:item_id])
+    if current_user.id == @item.user_id
+      redirect_to items_path
+    end
+  end
+
+  def sold_out
+    @item = Item.find(params[:item_id])
+    if @item.purchases.present?
+      redirect_to items_path
+    end
   end
 
   def purchase_params
