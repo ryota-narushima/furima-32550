@@ -7,7 +7,6 @@ class FormPurchase
     validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/ }
     validates :city
     validates :address
-    validates :building
     validates :phone_num, format: { with: /\A\d{10,11}\z/ }
   end
   validates :delivery_source_area_id, numericality: { other_than: 0 }
