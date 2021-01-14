@@ -35,14 +35,12 @@ class PurchasesController < ApplicationController
   end
 
   def move_to_index
-    set_item
     if current_user.id == @item.user_id
       redirect_to items_path
     end
   end
 
   def sold_out
-    set_item
     if @item.purchases.present?
       redirect_to items_path
     end
