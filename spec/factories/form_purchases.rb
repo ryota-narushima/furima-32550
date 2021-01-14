@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :form_purchase do
+    token                   {"tok_abcdefghijk00000000000000000"}
     postal_code             { "123-1234" }
     delivery_source_area_id { 2 }
     city                    { "田中市" }
